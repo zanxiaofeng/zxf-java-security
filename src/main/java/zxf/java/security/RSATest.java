@@ -13,6 +13,17 @@ import java.util.Base64;
 
 public class RSATest {
 
+    public static void main(String[] args) {
+        KeyPair keyPair = generateKeyPair();
+
+        String encrypted = encrypt("123456", keyPair.getPublic());
+        System.out.println(encrypted);
+
+        String decrypted = decrypt(encrypted, keyPair.getPrivate());
+        System.out.println(decrypted);
+    }
+
+
     public static KeyPair generateKeyPair() {
         try {
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
@@ -65,13 +76,5 @@ public class RSATest {
     }
 
 
-    public static void main(String[] args) {
-        KeyPair keyPair = generateKeyPair();
 
-        String encrypted = encrypt("123456", keyPair.getPublic());
-        System.out.println(encrypted);
-
-        String decrypted = decrypt(encrypted, keyPair.getPrivate());
-        System.out.println(decrypted);
-    }
 }
