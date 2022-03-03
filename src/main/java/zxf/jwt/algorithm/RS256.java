@@ -3,10 +3,9 @@ package zxf.jwt.algorithm;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import zxf.java.security.RSATest;
 
 import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.SecureRandom;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
@@ -20,7 +19,7 @@ public class RS256 {
     }
 
     public static void normal_case(){
-        KeyPair keyPair = generateKeyPair();
+        KeyPair keyPair = RSATest.loadKeyPairFromBase64();
 
         Algorithm rs256ForSign = Algorithm.RSA256(null, (RSAPrivateKey) keyPair.getPrivate());
         Algorithm rs256ForVerify = Algorithm.RSA256((RSAPublicKey) keyPair.getPublic(), null);
@@ -43,7 +42,7 @@ public class RS256 {
 
     public static void time_validation_ok_case() {
         Long currentTime = System.currentTimeMillis();
-        KeyPair keyPair = generateKeyPair();
+        KeyPair keyPair = RSATest.loadKeyPairFromBase64();
 
         Algorithm rs256ForSign = Algorithm.RSA256(null, (RSAPrivateKey) keyPair.getPrivate());
         Algorithm rs256ForVerify = Algorithm.RSA256((RSAPublicKey) keyPair.getPublic(), null);
@@ -69,7 +68,7 @@ public class RS256 {
 
     public static void time_validation_failed_expired_case() {
         Long currentTime = System.currentTimeMillis();
-        KeyPair keyPair = generateKeyPair();
+        KeyPair keyPair = RSATest.loadKeyPairFromBase64();
 
         Algorithm rs256ForSign = Algorithm.RSA256(null, (RSAPrivateKey) keyPair.getPrivate());
         Algorithm rs256ForVerify = Algorithm.RSA256((RSAPublicKey) keyPair.getPublic(), null);
@@ -97,16 +96,5 @@ public class RS256 {
 
         //Just decode
         DecodedJWT decodedJWT = JWT.decode(token);
-    }
-
-    public static KeyPair generateKeyPair() {
-        try {
-            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-            //512, 1024, 2048
-            keyPairGenerator.initialize(2048, new SecureRandom());
-            return keyPairGenerator.generateKeyPair();
-        } catch (Exception e) {
-            throw new RuntimeException("Exception when generate a keypair", e);
-        }
     }
 }
