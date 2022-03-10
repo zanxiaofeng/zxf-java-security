@@ -15,7 +15,6 @@ public class SignatureTest {
         case_normal("SHA512withRSA");
     }
 
-
     private static void case_normal(String algorithm) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
         KeyPair keyPair = RSAKeyTool.loadKeyPairFromBase64();
         byte[] content = "1234567890".getBytes(StandardCharsets.UTF_8);

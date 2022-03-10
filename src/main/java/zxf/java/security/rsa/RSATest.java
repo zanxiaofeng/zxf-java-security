@@ -12,7 +12,7 @@ public class RSATest {
         use_case_load_and_use_for_base64();
     }
 
-    public static void use_case_generate_and_store() {
+    public static void use_case_gen_and_store() {
         KeyPair keyPair = RSAKeyTool.generateKeyPair();
 
         RSAKeyTool.storeKeyPair(keyPair);
