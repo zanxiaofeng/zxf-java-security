@@ -1,4 +1,4 @@
-package zxf.java.security;
+package zxf.java.security.keystore;
 
 import javax.crypto.SecretKey;
 import java.io.IOException;

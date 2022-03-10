@@ -3,7 +3,7 @@ package zxf.jwt.algorithm;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import zxf.java.security.RSATest;
+import zxf.java.security.rsa.RSAKeyTool;
 
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
@@ -19,7 +19,7 @@ public class RS256 {
     }
 
     public static void normal_case(){
-        KeyPair keyPair = RSATest.loadKeyPairFromBase64();
+        KeyPair keyPair = RSAKeyTool.loadKeyPairFromBase64();
 
         Algorithm rs256ForSign = Algorithm.RSA256(null, (RSAPrivateKey) keyPair.getPrivate());
         Algorithm rs256ForVerify = Algorithm.RSA256((RSAPublicKey) keyPair.getPublic(), null);
@@ -42,7 +42,7 @@ public class RS256 {
 
     public static void time_validation_ok_case() {
         Long currentTime = System.currentTimeMillis();
-        KeyPair keyPair = RSATest.loadKeyPairFromBase64();
+        KeyPair keyPair = RSAKeyTool.loadKeyPairFromBase64();
 
         Algorithm rs256ForSign = Algorithm.RSA256(null, (RSAPrivateKey) keyPair.getPrivate());
         Algorithm rs256ForVerify = Algorithm.RSA256((RSAPublicKey) keyPair.getPublic(), null);
@@ -68,7 +68,7 @@ public class RS256 {
 
     public static void time_validation_failed_expired_case() {
         Long currentTime = System.currentTimeMillis();
-        KeyPair keyPair = RSATest.loadKeyPairFromBase64();
+        KeyPair keyPair = RSAKeyTool.loadKeyPairFromBase64();
 
         Algorithm rs256ForSign = Algorithm.RSA256(null, (RSAPrivateKey) keyPair.getPrivate());
         Algorithm rs256ForVerify = Algorithm.RSA256((RSAPublicKey) keyPair.getPublic(), null);
