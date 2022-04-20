@@ -13,7 +13,7 @@ public class AESKeyTool {
     public static SecretKey generateKey() throws NoSuchAlgorithmException {
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         //AES support 128(default), 192, 256
-        keyGenerator.init(226, new SecureRandom());
+        keyGenerator.init(256, new SecureRandom());
         SecretKey secretKey = keyGenerator.generateKey();
         return secretKey;
     }
