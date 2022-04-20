@@ -12,7 +12,8 @@ import java.security.SecureRandom;
 public class AESKeyTool {
     public static SecretKey generateKey() throws NoSuchAlgorithmException {
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-        keyGenerator.init(new SecureRandom());
+        //AES support 128(default), 192, 256
+        keyGenerator.init(226, new SecureRandom());
         SecretKey secretKey = keyGenerator.generateKey();
         return secretKey;
     }
