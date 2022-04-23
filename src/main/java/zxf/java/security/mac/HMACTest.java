@@ -12,7 +12,7 @@ public class HMACTest {
 
     private static void case_normal(String algorithm) throws Exception {
         System.out.println("case_normal");
-        HMACTool hmacTool = new HMACTool(algorithm, HMACKeyTool.generateKey(algorithm));
+        HMACTool hmacTool = new HMACTool(algorithm, HMACKeyTool.loadKey(algorithm));
         String message = "12132235325324324";
         String hmac = hmacTool.generateHMAC(message);
         System.out.println(algorithm + ": " + message + "," + hmac);
@@ -21,7 +21,7 @@ public class HMACTest {
 
     private static void case_error(String algorithm) throws Exception {
         System.out.println("case_error");
-        HMACTool hmacTool = new HMACTool(algorithm, HMACKeyTool.generateKey(algorithm));
+        HMACTool hmacTool = new HMACTool(algorithm, HMACKeyTool.loadKey(algorithm));
         String message1 = "12132235325324324";
         String hmac1 = hmacTool.generateHMAC(message1);
         System.out.println(algorithm + ": " + message1 + "," + hmac1);
