@@ -1,11 +1,20 @@
 package zxf.java.security.keystore;
 
+import org.bouncycastle.util.io.pem.PemObject;
+import org.bouncycastle.util.io.pem.PemWriter;
+
 import javax.crypto.SecretKey;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.nio.file.Paths;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+
+import static zxf.bouncycastle.pem.PrivateTests.writePrivateKeyWithPem;
+import static zxf.bouncycastle.pem.PublicKeyTests.writePublicKeyWithPem;
 
 public class KeystoreTest {
     public static void main(String[] args) throws UnrecoverableKeyException, CertificateException, KeyStoreException, IOException, NoSuchAlgorithmException {
@@ -27,9 +36,15 @@ public class KeystoreTest {
 
         char[] password = pw.toCharArray();
         KeyStore keyStore = KeyStore.getInstance(Paths.get(file).toFile(), password);
+
         PrivateKey myPrivateKey = (PrivateKey) keyStore.getKey("myPrivateKey", password);
+        writePrivateKeyWithPem((RSAPrivateKey) myPrivateKey);
+
         Certificate myCertificate = keyStore.getCertificate("myPrivateKey");
+
         PublicKey myPublicKey = myCertificate.getPublicKey();
+        writePublicKeyWithPem((RSAPublicKey) myPublicKey);
+
         SecretKey mySecretKey = (SecretKey) keyStore.getKey("mySecretKey", password);
     }
 }
