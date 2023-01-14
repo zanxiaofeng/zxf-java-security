@@ -18,7 +18,7 @@ public class CertificationTests {
     }
 
     private static X509Certificate readCertificateFileWithPem() throws IOException, CertificateException {
-        try (InputStream stream = new FileInputStream(Paths.get("./keystores/certificate.pem").toFile())) {
+        try (InputStream stream = new FileInputStream(certificateFile)) {
             return (X509Certificate) CertificateFactory.getInstance("X.509").generateCertificate(stream);
         }
     }
