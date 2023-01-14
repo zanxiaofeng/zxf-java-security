@@ -1,18 +1,16 @@
 package zxf.java.security.keystore;
 
-import org.bouncycastle.util.io.pem.PemObject;
-import org.bouncycastle.util.io.pem.PemWriter;
-
 import javax.crypto.SecretKey;
 import java.io.IOException;
-import java.io.StringWriter;
 import java.nio.file.Paths;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
+import static zxf.bouncycastle.pem.CertificationTests.writeCertificateWithPem;
 import static zxf.bouncycastle.pem.PrivateTests.writePrivateKeyWithPem;
 import static zxf.bouncycastle.pem.PublicKeyTests.writePublicKeyWithPem;
 
@@ -41,6 +39,7 @@ public class KeystoreTest {
         writePrivateKeyWithPem((RSAPrivateKey) myPrivateKey);
 
         Certificate myCertificate = keyStore.getCertificate("myPrivateKey");
+        writeCertificateWithPem((X509Certificate) myCertificate);
 
         PublicKey myPublicKey = myCertificate.getPublicKey();
         writePublicKeyWithPem((RSAPublicKey) myPublicKey);

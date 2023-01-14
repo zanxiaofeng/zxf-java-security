@@ -54,5 +54,4 @@ public class PrivateTests {
             System.out.println(stringWriter.toString());
         }
     }
-
 }
