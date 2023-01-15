@@ -1,6 +1,6 @@
 # export cert and private key from keystore
 - keytool -importkeystore -srckeystore server.jks -destkeystore server.p12 -deststoretype PKCS12
-- keytool -export -keystore <keystore-file> -storetype <type> -storepass <pass> -alias <alias> -rfc -file <export.pem>
+- keytool -export -keystore <keystore-file> -storetype <type> -storepass <pass> -alias <alias> -rfc -file <server.cer.pem>
 - openssl pkcs12 -in server.p12 -nokeys -out server.cer.pem
 - openssl pkcs12 -in server.p12 -nodes -nocerts -out server.key.pem
 
