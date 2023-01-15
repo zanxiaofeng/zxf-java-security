@@ -16,7 +16,7 @@ import static zxf.bouncycastle.pem.PublicKeyTests.writePublicKeyWithPem;
 
 public class KeystoreTest {
     public static void main(String[] args) throws UnrecoverableKeyException, CertificateException, KeyStoreException, IOException, NoSuchAlgorithmException {
-        loadPKCS12Keystore("./keystores/mykeystore.p12", "changeit");
+        loadPKCS12Keystore("./keystores/p12/mykeystore.p12", "changeit");
     }
 
     private static void loadPKCS12Keystore(String file, String pw) throws CertificateException, KeyStoreException, IOException, NoSuchAlgorithmException, UnrecoverableKeyException {
@@ -25,7 +25,7 @@ public class KeystoreTest {
         keytool -genkeypair -alias myPrivateKey -keypass changeit -keyalg RSA -keysize 2048 -validity 1 -dname "CN=John Smith, OU=Development, O=Standard Supplies Inc., L=Anytown, S=North Carolina, C=US" -keystore mykeystore.p12 -storepass changeit -storetype PKCS12 -v
         keytool -list -keystore mykeystore.p12 -storepass changeit
         #export cert from keystore
-        keytool -export -keystore <keystore-file> -storetype <type> -storepass <pass> -alias <alias> -rfc -file <server.cer.pem>
+        keytool -export -keystore mykeystore.p12 -storetype PKCS12 -storepass <pass> -alias changeit -rfc -file certificate.pem
         CN - Common Name of the certificate owner
         OU - Organizational Unit of the certificate owner
         O - Organization to which the certificate owner belongs
