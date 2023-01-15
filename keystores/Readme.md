@@ -22,3 +22,7 @@
 -----BEGIN CERTIFICATE REQUEST-----
 ...Base64 encoded key...
 -----END CERTIFICATE REQUEST-----
+
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+...Base64 encoded key...
+-----END ENCRYPTED PRIVATE KEY-----
