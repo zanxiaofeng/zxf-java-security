@@ -19,7 +19,7 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 
-public class PrivateTests {
+public class PrivateKeyTests {
     private static File privateKeyFile = Paths.get("./keystores/private-key.pem").toFile();
 
     public static void main(String[] args) throws NoSuchAlgorithmException, IOException, InvalidKeySpecException {

@@ -11,7 +11,7 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
 import static zxf.bouncycastle.pem.CertificationTests.writeCertificateWithPem;
-import static zxf.bouncycastle.pem.PrivateTests.writePrivateKeyWithPem;
+import static zxf.bouncycastle.pem.PrivateKeyTests.writePrivateKeyWithPem;
 import static zxf.bouncycastle.pem.PublicKeyTests.writePublicKeyWithPem;
 
 public class KeystoreTest {
