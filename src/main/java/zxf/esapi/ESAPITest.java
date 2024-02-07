@@ -2,6 +2,7 @@ package zxf.esapi;
 
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.codecs.MySQLCodec;
+import org.owasp.esapi.codecs.OracleCodec;
 
 public class ESAPITest {
     public static void main(String[] args) {
@@ -11,6 +12,7 @@ public class ESAPITest {
 
     private static void testEncoder() {
         System.out.println("encodeForSQL: ' or 1=1->" + ESAPI.encoder().encodeForSQL(new MySQLCodec(MySQLCodec.Mode.STANDARD), "' or 1=1"));
+        System.out.println("encodeForSQL: ' or 1=1->" + ESAPI.encoder().encodeForSQL(new OracleCodec(), "' or 1=1"));
         System.out.println("encodeForHTML: &<>->" + ESAPI.encoder().encodeForHTML("&<>"));
     }
 
