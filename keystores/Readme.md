@@ -38,7 +38,7 @@
 - ```<file.cer>```
 ## Extract private key from keystore
 - ```openssl pkcs12 -in <keystore.p12> -passin pass:<pass> -nodes -nocerts -out <file.key.pem>```
-## Create new keystore and import private key nad signed cert
+## Create new keystore and import private key and signed cert
 - ```openssl pkcs12 -export -in <file.cer> -inkey <file.key.pem> -out <new-keystore.p12> -passout pass:<pass>```
 ## Import Root CA Cert and Intermediate Cert
 - ```keytool -import -trustcacerts -file <root-or-intermediate.cer> -keystore <new-keystore.p12> -storetype pkcs12 -storepass <pass> -alias <alias>```
