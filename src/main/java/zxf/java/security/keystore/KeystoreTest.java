@@ -51,6 +51,13 @@ public class KeystoreTest {
 
         Collections.list(keyStore.aliases()).stream().forEach((alias) -> {
             try {
+                if (keyStore.isCertificateEntry(alias)) {
+                    KeyStore.TrustedCertificateEntry trustedCertificateEntry = (KeyStore.TrustedCertificateEntry) keyStore.getEntry(alias, null);
+                    System.out.println("##.TrustedCertificateEntry." + alias);
+                    System.out.println("##.." + trustedCertificateEntry);
+                    return;
+                }
+
                 KeyStore.Entry entry = keyStore.getEntry(alias, new KeyStore.PasswordProtection(password));
                 if (entry instanceof KeyStore.PrivateKeyEntry) {
                     KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) entry;
@@ -60,10 +67,6 @@ public class KeystoreTest {
                     KeyStore.SecretKeyEntry secretKeyEntry = (KeyStore.SecretKeyEntry) entry;
                     System.out.println("##.SecretKeyEntry." + alias);
                     System.out.println("##.." + secretKeyEntry);
-                } else if (entry instanceof KeyStore.TrustedCertificateEntry) {
-                    KeyStore.TrustedCertificateEntry trustedCertificateEntry = (KeyStore.TrustedCertificateEntry) entry;
-                    System.out.println("##.TrustedCertificateEntry." + alias);
-                    System.out.println("##.." + trustedCertificateEntry);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

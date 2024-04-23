@@ -29,7 +29,10 @@
 -----END ENCRYPTED PRIVATE KEY-----
 ```
 
-# How to generate cert
+# how to import trust cert
+- keytool -importcert -file <file.cer> -keystore <keystore> -alias <aias> -storepass <pass>
+
+# How to generate cert(With private key)
 ## Create keystore
 - ```keytool -genkeypair -v -alias <aias> -keyalg RSA -keysize 2048 - -validity 365 -keystore <keystore.p12> -storetype pkcs12 -storepass <pass> -keypass <pass> -dname="CN=***,O=***,L=***,C=CN"```
 ## Create CSR(Certificate Signing Request)
