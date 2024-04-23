@@ -3,6 +3,6 @@
 # Key classes of KeyStore
 - java.security.KeyStore
 - java.security.KeyStore.Entry
-- java.security.KeyStore.SecretKeyEntry
-- java.security.KeyStore.PrivateKeyEntry
-- java.security.KeyStore.TrustedCertificateEntry
+- java.security.KeyStore.SecretKeyEntry(SecretKey sKey, Set<Entry.Attribute> attributes)
+- java.security.KeyStore.PrivateKeyEntry(PrivateKey privKey, Certificate[] chain, Set<Entry.Attribute> attributes)
+- java.security.KeyStore.TrustedCertificateEntry(Certificate cert, Set<Entry.Attribute> attributes)

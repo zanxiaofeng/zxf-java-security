@@ -9,6 +9,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Collections;
 
 import static zxf.bouncycastle.pem.CertificationTests.writeCertificateWithPem;
 import static zxf.bouncycastle.pem.PrivateKeyTests.writePrivateKeyWithPem;
@@ -47,5 +48,26 @@ public class KeystoreTest {
         writePublicKeyWithPem((RSAPublicKey) myPublicKey);
 
         SecretKey mySecretKey = (SecretKey) keyStore.getKey("mySecretKey", password);
+
+        Collections.list(keyStore.aliases()).stream().forEach((alias) -> {
+            try {
+                KeyStore.Entry entry = keyStore.getEntry(alias, new KeyStore.PasswordProtection(password));
+                if (entry instanceof KeyStore.PrivateKeyEntry) {
+                    KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) entry;
+                    System.out.println("##.PrivateKeyEntry." + alias);
+                    System.out.println("##.." + privateKeyEntry);
+                } else if (entry instanceof KeyStore.SecretKeyEntry) {
+                    KeyStore.SecretKeyEntry secretKeyEntry = (KeyStore.SecretKeyEntry) entry;
+                    System.out.println("##.SecretKeyEntry." + alias);
+                    System.out.println("##.." + secretKeyEntry);
+                } else if (entry instanceof KeyStore.TrustedCertificateEntry) {
+                    KeyStore.TrustedCertificateEntry trustedCertificateEntry = (KeyStore.TrustedCertificateEntry) entry;
+                    System.out.println("##.TrustedCertificateEntry." + alias);
+                    System.out.println("##.." + trustedCertificateEntry);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
