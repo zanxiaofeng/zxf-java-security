@@ -30,6 +30,7 @@
 ```
 
 # how to import trust cert
+## import first cert
 - keytool -importcert -file <file.cer> -keystore <keystore> -alias <aias> -storepass <pass>
 
 # How to generate cert(With private key)
