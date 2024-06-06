@@ -2,9 +2,6 @@ package zxf.file;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class FileTests {
     public static void main(String[] args) {
@@ -47,6 +44,4 @@ public class FileTests {
             System.out.println("Directory already exists");
         }
     }
-
-
 }
