@@ -1,6 +1,7 @@
 package zxf.escape;
 
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.bouncycastle.util.encoders.Hex;
 
@@ -16,6 +17,7 @@ public class EscapeTest {
 
         System.out.println("a\r\n\t=" + "a\r\n\tbc".replaceAll("(\\r|\\n|\\t)", ""));
 
+        System.out.println("normalizeSpace: a\n\r\tbc => " + StringUtils.normalizeSpace("a\n\r\tbc"));
 
         System.out.println("escapeCsv::");
         System.out.println("escapeCsv: \"abc => " + StringEscapeUtils.escapeCsv("\"abc"));
