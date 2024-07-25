@@ -14,6 +14,8 @@ public class EscapeTest {
         System.out.println("line.separator=" + Hex.toHexString(System.getProperty("line.separator").getBytes(StandardCharsets.UTF_8)));
         System.out.println("line.separator=" + Hex.toHexString(System.lineSeparator().getBytes(StandardCharsets.UTF_8)));
 
+        System.out.println("a\r\n\t=" + "a\r\n\tbc".replaceAll("(\\r|\\n|\\t)", ""));
+
 
         System.out.println("escapeCsv::");
         System.out.println("escapeCsv: \"abc => " + StringEscapeUtils.escapeCsv("\"abc"));
