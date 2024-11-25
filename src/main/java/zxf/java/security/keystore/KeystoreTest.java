@@ -24,7 +24,7 @@ public class KeystoreTest {
         /* PKCS12
         keytool -genseckey -alias mySecretKey -keypass changeit -keyalg AES -keysize 256 -keystore mykeystore.p12 -storepass changeit -storetype PKCS12 -v
         keytool -genkeypair -alias myPrivateKey -keypass changeit -keyalg RSA -keysize 2048 -validity 1 -dname "CN=John Smith, OU=Development, O=Standard Supplies Inc., L=Anytown, S=North Carolina, C=US" -keystore mykeystore.p12 -storepass changeit -storetype PKCS12 -v
-        keytool -v -list -keystore mykeystore.p12 -storepass changeit
+        keytool -v -list -keystore mykeystore.p12 -storepass changeit -storetype PKCS12
         #export cert from keystore
         keytool -export -keystore mykeystore.p12 -storetype PKCS12 -storepass <pass> -alias changeit -rfc -file certificate.pem
         CN - Common Name of the certificate owner
