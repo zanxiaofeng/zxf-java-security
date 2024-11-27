@@ -31,18 +31,26 @@
 
 # how to import trust cert
 ## import first cert
-- keytool -importcert -file <file.cer> -keystore <keystore> -alias <aias> -storepass <pass>
+- keytool -importcert -file <ca-cert.cer> -keystore <keystore> -alias <aias> -storepass <pass>
 
 # How to generate cert(With private key)
 ## Create keystore
 - ```keytool -genkeypair -v -alias <aias> -keyalg RSA -keysize 2048 - -validity 365 -keystore <keystore.p12> -storetype pkcs12 -storepass <pass> -keypass <pass> -dname="CN=***,O=***,L=***,C=CN"```
 ## Create CSR(Certificate Signing Request)
-- ```keytool -certreq -alias <alias> -file <file.csr> -keystore <keystore> -storetype pkcs12```
+- ```keytool -certreq -alias <alias> -file <server-cert.csr> -keystore <keystore> -storetype pkcs12```
 ## Get Cert from CSR
-- ```<file.cer>```
+- ```<server-cert.cer>```
 ## Extract private key from keystore
-- ```openssl pkcs12 -in <keystore.p12> -passin pass:<pass> -nodes -nocerts -out <file.key.pem>```
+- ```openssl pkcs12 -in <keystore.p12> -passin pass:<pass> -nodes -nocerts -out <server.key.pem>```
 ## Create new keystore and import private key and signed cert
-- ```openssl pkcs12 -export -in <file.cer> -inkey <file.key.pem> -out <new-keystore.p12> -passout pass:<pass>```
+- ```openssl pkcs12 -export -in <new-server-cert.cer> -inkey <server.key.pem> -out <new-keystore.p12> -passout pass:<pass>```
+## Import Root CA Cert and Intermediate Cert
+- ```keytool -import -trustcacerts -file <root-or-intermediate.cer> -keystore <new-keystore.p12> -storetype pkcs12 -storepass <pass> -alias <alias>```
+
+# How to re-new cert(With private key)
+## Extract private key from old keystore
+- ```openssl pkcs12 -in <old-keystore.p12> -passin pass:<pass> -nodes -nocerts -out <server.key.pem>```
+## Create new keystore and import private key and new signed cert
+- ```openssl pkcs12 -export -in <re-new-server-cert.cer> -inkey <server.key.pem> -out <new-keystore.p12> -passout pass:<pass>```
 ## Import Root CA Cert and Intermediate Cert
 - ```keytool -import -trustcacerts -file <root-or-intermediate.cer> -keystore <new-keystore.p12> -storetype pkcs12 -storepass <pass> -alias <alias>```
