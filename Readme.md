@@ -2,9 +2,7 @@
 
 # In cryptography, a public key certificate, also known as a digital certificate or identity certificate, is an electronic document used to prove the validity of a public key. The certificate includes the public key and information about it, information about the identity of its owner (called the subject), and the digital signature of an entity that has verified the certificate's contents (called the issuer).
 
-# 注意： 证书只是包含公钥，私钥不包含在证书里， Trust Store里面只包含证书，而Key Store里面可以包含证书、私钥以及其他Key。
-
-# 基于Key Store的Cert Renew只需要将原Key Store中即将过期的Cert删除并重新导入Renew后的Cert即可。
+# 注意： 证书只是包含公钥，私钥不包含在证书里， Trust Store里面只包含证书，而Key Store里面可以包含证书、私钥-证书对以及其他Key。
 
 # Key classes of KeyStore
 - java.security.KeyStore
