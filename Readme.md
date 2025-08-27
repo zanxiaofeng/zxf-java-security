@@ -10,3 +10,22 @@
 - java.security.KeyStore.SecretKeyEntry(SecretKey sKey, Set<Entry.Attribute> attributes)
 - java.security.KeyStore.PrivateKeyEntry(PrivateKey privKey, Certificate[] chain, Set<Entry.Attribute> attributes)
 - java.security.KeyStore.TrustedCertificateEntry(Certificate cert, Set<Entry.Attribute> attributes)
+
+
+# Public Key formats
+## PEM (Privacy-enhanced Electronic Mail)
+- A PEM file is a text file with one or more elements encoded in ASCII Base64 with headers and footers in plaintext.
+- PKCS#1 RSAPublicKey (PEM header: BEGIN RSA PUBLIC KEY)
+- PKCS#8 EncryptedPrivateKeyInfo (PEM header: BEGIN ENCRYPTED PRIVATE KEY)
+- PKCS#8 PrivateKeyInfo (PEM header: BEGIN PRIVATE KEY)
+- X.509 SubjectPublicKeyInfo (PEM header: BEGIN PUBLIC KEY)
+- CSR PEM header : (PEM header:----BEGIN NEW CERTIFICATE REQUEST-----)
+- DSA PrivateKeyInfo (PEM header: (-----BEGIN DSA PRIVATE KEY----)
+- https://8gwifi.org/PemParserFunctions.jsp
+## DER-encoded (Distinguished Encoding Rules-encoded)
+- The DER-encoded (Distinguished Encoding Rules-encoded) format is a binary encoding method for data described by ASN.1.
+## SSH (the Secure Shell public key file)
+- ssh-ed25519 <content> <commonce>
+## SSH2 (an improved version of the SSH format)
+- PEM header "BEGIN SSH2 PUBLIC KEY"
+
