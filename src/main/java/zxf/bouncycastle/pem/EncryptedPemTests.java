@@ -16,19 +16,12 @@ import java.io.FileReader;
 import java.security.PrivateKey;
 import java.security.Security;
 
-public class LoadEncryptedPem {
+public class EncryptedPemTests {
     public static void main(String[] args) {
-        try {
-            String pemFilePath = "keys/encrypted/encrypted-private-key.pem";
-            String password = "123456";
-            PrivateKey privateKey = loadPrivateKey(pemFilePath, password.toCharArray());
-            System.out.println("Successfully loaded and decrypted the private key.");
-        } catch (Exception e) {
-            System.out.println("Error loading PEM file: " + e.getMessage());
-        }
+        loadPrivateKey("keys/encrypted/encrypted-private-key.pem", "123456".toCharArray());
     }
 
-    public static PrivateKey loadPrivateKey(String pemFilePath, char[] password) throws Exception {
+    public static PrivateKey loadPrivateKey(String pemFilePath, char[] password) {
         Security.addProvider(new BouncyCastleProvider());
         try (FileReader fileReader = new FileReader(pemFilePath); PEMParser pemParser = new PEMParser(fileReader)) {
             Object object = pemParser.readObject();
@@ -38,15 +31,22 @@ public class LoadEncryptedPem {
                 InputDecryptorProvider decryptorProvider = new JceOpenSSLPKCS8DecryptorProviderBuilder().build(password);
                 PrivateKeyInfo privateKeyInfo = encryptedPrivateKeyInfo.decryptPrivateKeyInfo(decryptorProvider);
                 JcaPEMKeyConverter converter = new JcaPEMKeyConverter().setProvider("BC");
-                return converter.getPrivateKey(privateKeyInfo);
+                PrivateKey privateKey = converter.getPrivateKey(privateKeyInfo);
+                System.out.println("Successfully loaded and decrypted the private key.");
+                return privateKey;
             } else if (object instanceof PEMEncryptedKeyPair) {
                 PEMEncryptedKeyPair encryptedKeyPair = (PEMEncryptedKeyPair) object;
                 PEMDecryptorProvider decryptorProvider = new JcePEMDecryptorProviderBuilder().build(password);
                 PEMKeyPair keyPair = encryptedKeyPair.decryptKeyPair(decryptorProvider);
                 JcaPEMKeyConverter converter = new JcaPEMKeyConverter().setProvider("BC");
-                return converter.getPrivateKey(keyPair.getPrivateKeyInfo());
+                PrivateKey privateKey = converter.getPrivateKey(keyPair.getPrivateKeyInfo());
+                System.out.println("Successfully loaded and decrypted the private key.");
+                return privateKey;
             }
             throw new IllegalArgumentException("Unsupported PEM object type: " + object.getClass().getName());
+        } catch (Exception e) {
+            System.out.println("Error loading PEM file: " + e.getMessage());
         }
+        return null;
     }
 }
