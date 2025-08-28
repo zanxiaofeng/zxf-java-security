@@ -19,7 +19,7 @@ import java.security.Security;
 public class LoadEncryptedPem {
     public static void main(String[] args) {
         try {
-            String pemFilePath = "keys/enc-private-key";
+            String pemFilePath = "keys/encrypted/encrypted-private-key.pem";
             String password = "123456";
             PrivateKey privateKey = loadPrivateKey(pemFilePath, password.toCharArray());
             System.out.println("Successfully loaded and decrypted the private key.");
