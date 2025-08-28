@@ -11,9 +11,19 @@
 - java.security.KeyStore.PrivateKeyEntry(PrivateKey privKey, Certificate[] chain, Set<Entry.Attribute> attributes)
 - java.security.KeyStore.TrustedCertificateEntry(Certificate cert, Set<Entry.Attribute> attributes)
 
+# Key classes of PEMReader/Parser
+- org.bouncycastle.util.io.pem.PemHeader;
+- org.bouncycastle.util.io.pem.PemObject;
+- org.bouncycastle.util.io.pem.PemReader;
+- 
+- org.bouncycastle.openssl.PEMParser
+- org.bouncycastle.util.io.pem.PemObjectParser
+- org.bouncycastle.openssl.PEMParser.ECCurveParamsParser
+- org.bouncycastle.openssl.PEMParser.X509CertificateParser
+- org.bouncycastle.openssl.PEMParser.X509CRLParser
 
 # Public Key formats
-## PEM (Privacy-enhanced Electronic Mail)
+## PEM Format(Privacy-enhanced Electronic Mail)
 - A PEM file is a text file with one or more elements encoded in ASCII Base64 with headers and footers in plaintext.
 - PKCS#1 RSAPublicKey (PEM header: BEGIN RSA PUBLIC KEY)
 - PKCS#8 EncryptedPrivateKeyInfo (PEM header: BEGIN ENCRYPTED PRIVATE KEY)
@@ -21,11 +31,16 @@
 - X.509 SubjectPublicKeyInfo (PEM header: BEGIN PUBLIC KEY)
 - CSR PEM header : (PEM header:----BEGIN NEW CERTIFICATE REQUEST-----)
 - DSA PrivateKeyInfo (PEM header: (-----BEGIN DSA PRIVATE KEY----)
-- https://8gwifi.org/PemParserFunctions.jsp
-## DER-encoded (Distinguished Encoding Rules-encoded)
+## DER-encoded Format(Distinguished Encoding Rules-encoded)
 - The DER-encoded (Distinguished Encoding Rules-encoded) format is a binary encoding method for data described by ASN.1.
-## SSH (the Secure Shell public key file)
+## SSH Format(The Secure Shell Public Key File Format)
 - ssh-ed25519 <content> <commonce>
-## SSH2 (an improved version of the SSH format)
+## SSH2 Format(An Improved Version of The SSH Format)
 - PEM header "BEGIN SSH2 PUBLIC KEY"
 
+# URLs
+- https://8gwifi.org/PemParserFunctions.jsp
+- https://8gwifi.org/sshfunctions.jsp
+- https://8gwifi.org/pempasswordfinder.jsp
+- https://www.cryptosys.net/pki/rsakeyformats.html
+- https://www.cryptosys.net/pki/openssh-keys.html

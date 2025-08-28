@@ -18,7 +18,7 @@ import java.security.Security;
 
 public class EncryptedPemTests {
     public static void main(String[] args) {
-        loadPrivateKey("keys/encrypted/encrypted-private-key.pem", "123456".toCharArray());
+        loadPrivateKey("keys/encrypted/encrypted-rsa-key.pem", "123456".toCharArray());
     }
 
     public static PrivateKey loadPrivateKey(String pemFilePath, char[] password) {
