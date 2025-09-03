@@ -34,7 +34,7 @@
 ## DER-encoded Format(Distinguished Encoding Rules-encoded)
 - The DER-encoded (Distinguished Encoding Rules-encoded) format is a binary encoding method for data described by ASN.1.
 ## SSH Format(The Secure Shell Public Key File Format)
-- ssh-ed25519 <content> <commonce>
+- `<type-name> <base64-encoded-ssh-public-key>[ <comment>]`
 ## SSH2 Format(An Improved Version of The SSH Format)
 - PEM header "BEGIN SSH2 PUBLIC KEY"
 
