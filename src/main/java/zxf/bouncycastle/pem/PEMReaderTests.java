@@ -18,7 +18,6 @@ public class PEMReaderTests {
             System.out.println("Type: " + pemObject.getType());
             System.out.println("Headers: " + pemObject.getHeaders().stream().map(PEMReaderTests::formatHeader).collect(Collectors.toList()));
             System.out.println("Content: " + Base64.encode(pemObject.getContent()));
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
