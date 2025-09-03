@@ -38,6 +38,10 @@
 ## SSH2 Format(An Improved Version of The SSH Format)
 - PEM header "BEGIN SSH2 PUBLIC KEY"
 
+# How to generate public key from private key
+- `openssl rsa -in <key>.pem -pubout -outform PEM|DER|PVK -out <pubkey>.pem`
+- `ssh-keygen -y -f <key>.pem`
+
 # URLs
 - https://8gwifi.org/PemParserFunctions.jsp
 - https://8gwifi.org/sshfunctions.jsp

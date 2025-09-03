@@ -12,9 +12,15 @@ import java.util.stream.Collectors;
 
 public class PEMReaderTests {
     public static void main(String[] args) {
+        readPom("keys/encrypted/encrypted-rsa-key.pem");
+        readPom("keys/encrypted/encrypted-dsa-key.pem");
+    }
+
+    public static void readPom(String filePath) {
         Security.addProvider(new BouncyCastleProvider());
-        try (FileReader fileReader = new FileReader("keys/encrypted/encrypted-rsa-key.pem"); PemReader pemReader = new PemReader(fileReader)) {
+        try (FileReader fileReader = new FileReader(filePath); PemReader pemReader = new PemReader(fileReader)) {
             PemObject pemObject = pemReader.readPemObject();
+            System.out.println("\nFile: " + filePath);
             System.out.println("Type: " + pemObject.getType());
             System.out.println("Headers: " + pemObject.getHeaders().stream().map(PEMReaderTests::formatHeader).collect(Collectors.toList()));
             System.out.println("Content: " + Base64.encode(pemObject.getContent()));
