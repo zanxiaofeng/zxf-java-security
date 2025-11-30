@@ -12,12 +12,13 @@
     </properties>
 
     <dependencies>
+        <!--  auth0      -->
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
             <version>3.18.3</version>
         </dependency>
-
+        <!--  jjwt      -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -35,6 +36,12 @@
             <!-- or jjwt-gson if Gson is preferred -->
             <version>0.11.2</version>
             <scope>runtime</scope>
+        </dependency>
+        <!--    nimbus    -->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>10.6</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

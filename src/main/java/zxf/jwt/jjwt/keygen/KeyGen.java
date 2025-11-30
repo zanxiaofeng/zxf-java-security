@@ -1,4 +1,4 @@
-package zxf.jwt.keygen;
+package zxf.jwt.jjwt.keygen;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;

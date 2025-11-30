@@ -1,4 +1,4 @@
-package zxf.jwt.algorithm;
+package zxf.jwt.auth0.algorithm;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
