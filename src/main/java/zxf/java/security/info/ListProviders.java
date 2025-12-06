@@ -22,7 +22,7 @@ public class ListProviders {
             });
 
             provider.getServices().stream().forEach(s -> {
-                System.out.println("\tS: " + s.getType() + "\t: " + s.getAlgorithm());
+                System.out.println("\tS: " + s.toString());
             });
         }
     }
